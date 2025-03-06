@@ -12,7 +12,7 @@ const Navbar = () => {
   const dropDownRef = useRef(null)
 
   const handleClicOutside = useCallback((event) => {
-  if (ref.current && !ref.current.contains(event.target)) {
+  if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
     setIsOpen(false);
   }
 }, []);
