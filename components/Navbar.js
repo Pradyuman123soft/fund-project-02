@@ -1,5 +1,6 @@
 "use client"
 import {useState, useRef, useEffect} from 'react'
+import { useCallback } from "react";
 import Image from "next/image";
 import Link from 'next/link'
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -10,17 +11,12 @@ const Navbar = () => {
   const [showDropDown, setshowDropDown] = useState(false)
   const dropDownRef = useRef(null)
 
-  const handleClicOutside=(e)=>{
-    if(dropDownRef.current && !dropDownRef.current.contains(e.target)){
-      setshowDropDown(false);
-    }
+  const handleClicOutside = useCallback((event) => {
+  if (ref.current && !ref.current.contains(event.target)) {
+    setIsOpen(false);
   }
+}, []);
   useEffect(() => {
-    const handleClicOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
     document.addEventListener('mousedown', handleClicOutside);
     return () => {
     document.removeEventListener('mousedown', handleClicOutside);
