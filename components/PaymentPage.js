@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
+import { useCallback } from "react";
 import Image from "next/image";
 import Script from 'next/script'
 // import { useSession } from 'next-auth/react'
@@ -47,12 +48,12 @@ const PaymentPage = ({ username }) => {
     setpaymentform({ ...paymentform, [e.target.name]: e.target.value })
   }
 
-  const getdata = async (params) => {
+  const getdata = useCallback(async (params) => {
     let u = await getUser()
     setcurrentUser(u);
     let dbpayments = await fetchpayments(username)
     setpayments(dbpayments)
-  }
+  }, []);
   const pay = async (amount) => {
     // get the orderid
     let a = await initiate(amount, username, paymentform)
