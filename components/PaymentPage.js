@@ -137,7 +137,7 @@ const PaymentPage = ({ username }) => {
               <li key={i} className='flex items-center gap-3'>
                 <Image className='w-10 h-10 rounded-full' src="/profile.webp" alt="Donor" />
                 <span className='text-white'>{p.name} donated ₹{p.amount}</span>
-                <span className="italic text-gray-400">"{p.message}"</span>
+                <span className="italic text-gray-400">&quot;{p.message}&quot;</span>
               </li>
             ))
           )}
